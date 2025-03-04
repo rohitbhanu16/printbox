@@ -4,7 +4,7 @@ import OrderContext from '../context/OrderContext';
 
 const formatDate = (isoString) => {
   const date = new Date(isoString);
-  return date.toLocaleString(); // Converts to readable local date & time
+  return date.toLocaleString(); 
 };
 
 const CurrentOrdersScreen = () => {

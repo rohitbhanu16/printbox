@@ -1,0 +1,68 @@
+.dashhboard-container {
+  padding: 20px;
+}
+
+.orders-container {
+  display: flex;
+  gap: 20px;
+}
+
+.order-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: #f9f9f9;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  border: 2px #000 solid;
+  border-radius: 12px;
+}
+
+.order-card button {
+  background: green;
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.calendar-filter input {
+  margin-left: 10px;
+}
+
+.notification {
+  background: yellow;
+  padding: 10px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.pdf-preview {
+  align-self: center;
+}
+
+.searchAndFilter {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between SearchBar and Button */
+  width: 100%;
+  margin-bottom: 20px;
+  height: 60px;
+}
+
+.searchAndFilter > :first-child {
+  flex-grow: 1; /* SearchBar takes remaining space */
+}
+
+.searchAndFilter > button {
+  flex: 0 0 20%; /* Button takes 20% width */
+  height: 100%; /* Same height as SearchBar */
+}

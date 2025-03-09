@@ -29,7 +29,7 @@ const ProfilePage = () => {
       try {
         //const token = localStorage.getItem("token");
         const stationaryId = localStorage.getItem("stationaryId");
-        const response = await axios.get(`http://localhost:5001/api/stationary/profile/${stationaryId}`);
+        const response = await axios.get(`http://localhost:5000/api/stationary/profile/${stationaryId}`);
         setProfile(response.data);
         setUpdatedData({
           shopName: response.data.shopName,
@@ -63,7 +63,7 @@ const ProfilePage = () => {
     }
   
     try {
-      await axios.put("http://localhost:5001/api/stationary/update", updatedData, {
+      await axios.put("http://localhost:5000/api/stationary/update", updatedData, {
         headers: { 
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`  // ✅ Ensure token is included

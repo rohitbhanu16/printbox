@@ -4,6 +4,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Sidebar from "./Sidebar";
 import AuthContext from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Notification from "./Notification";
+import { Toaster } from "react-hot-toast";
 
 const Header = () => {
   const { user } = useContext(AuthContext);
@@ -12,6 +14,10 @@ const Header = () => {
 
   return (
     <>
+      <Toaster position="bottom-right" reverseOrder={false} />
+
+      <Notification />
+
       <AppBar position="static">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Avatar */}

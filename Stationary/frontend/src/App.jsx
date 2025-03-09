@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import AuthContext from "./context/AuthContext";
-import OrderContext from "./context/OrderContext";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";

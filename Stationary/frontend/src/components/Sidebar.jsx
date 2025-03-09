@@ -20,7 +20,7 @@ const Sidebar = ({ open, onClose, setFilteredOrders }) => {
 
       if (!token || !stationaryId) return alert("Session expired! Please log in again.");
 
-      const response = await axios.get("http://localhost:5001/api/orders", {
+      const response = await axios.get("http://localhost:5000/api/orders", {
         params: {
           stationary: stationaryId,
           startDate: startDate.format("YYYY-MM-DD"),

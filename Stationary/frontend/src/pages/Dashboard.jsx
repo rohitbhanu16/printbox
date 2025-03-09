@@ -27,7 +27,7 @@ const Dashboard = () => {
         if (!token || !stationaryId) return;
 
         const response = await axios.get(
-          `http://localhost:5001/api/orders?stationary=${stationaryId}`,
+          `http://localhost:5000/api/orders?stationary=${stationaryId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
@@ -62,7 +62,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:5001/api/orders/${orderId}/ready`,
+        `http://localhost:5000/api/orders/${orderId}/ready`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -122,14 +122,16 @@ const Dashboard = () => {
         Orders
       </Typography>
 
-      <div className='searchAndFilter'>
-        <SearchBar searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+      <div className="searchAndFilter">
+        <SearchBar
+          searchQuery={searchQuery}
+          onSearchChange={handleSearchChange}
+        />
 
         <Button variant="outlined" onClick={() => setSidebarOpen(true)}>
           Filter Orders
         </Button>
       </div>
-
 
       {/* Sidebar Component */}
       <Sidebar
@@ -173,7 +175,10 @@ const Dashboard = () => {
               </Button>
 
               {order.documents.length > 0 && (
-                <div className="pdf-preview" onClick={() => window.open(order.documents[0], "_blank")}>
+                <div
+                  className="pdf-preview"
+                  onClick={() => window.open(order.documents[0], "_blank")}
+                >
                   <iframe
                     src={`${order.documents[0]}#toolbar=0&navpanes=0&scrollbar=0`}
                     width="150"
@@ -183,8 +188,8 @@ const Dashboard = () => {
                 </div>
               )}
 
-             {/* ✅ Open PDF in Default Viewer */}
-                {order.documents.length > 0 && (
+              {/* ✅ Open PDF in Default Viewer */}
+              {order.documents.length > 0 && (
                 <Button
                   variant="contained"
                   color="secondary"
@@ -194,7 +199,6 @@ const Dashboard = () => {
                   Open in PDF Viewer
                 </Button>
               )}
-
             </div>
           ))
         ) : (

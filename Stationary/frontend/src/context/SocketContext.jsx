@@ -8,7 +8,7 @@ export const SocketProvider = ({ children }) => {
   const [newOrder, setNewOrder] = useState(null);
 
   useEffect(() => {
-    const newSocket = io('http://localhost:5001'); // Connect to backend
+    const newSocket = io('http://localhost:5000'); // Connect to backend
     setSocket(newSocket);
 
     newSocket.on('newOrder', (order) => {

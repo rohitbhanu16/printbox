@@ -22,7 +22,7 @@ export const OrderProvider = ({ children }) => {
     const fetchOrders = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5001/api/orders?stationary=${stationaryId}`,
+          `http://localhost:5000/api/orders?stationary=${stationaryId}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setOrders(response.data);
@@ -34,7 +34,7 @@ export const OrderProvider = ({ children }) => {
     fetchOrders(); // ✅ Fetch orders when component mounts
 
     // ✅ Setup Stationary WebSocket Connection
-    const newStationarySocket = io("http://localhost:5001", {
+    const newStationarySocket = io("http://localhost:5000", {
       auth: { token },
       transports: ["websocket"],
     });

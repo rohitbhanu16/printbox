@@ -38,10 +38,13 @@ io.on("connection", (socket) => {
   socket.on("joinRoom", (stationaryId, callback) => {
     socket.join(stationaryId);
     console.log(`🏠 Stationary ${stationaryId} joined WebSocket room`);
-    
+
     // ✅ Log current clients in room
     const clients = io.sockets.adapter.rooms.get(stationaryId);
-    console.log(`👥 Clients in Room ${stationaryId}:`, clients ? [...clients] : "No clients");
+    console.log(
+      `👥 Clients in Room ${stationaryId}:`,
+      clients ? [...clients] : "No clients"
+    );
 
     // Send acknowledgment to frontend
     if (callback) callback(`Joined room ${stationaryId}`);
@@ -66,10 +69,12 @@ io.on("connection", (socket) => {
 });
 
 const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const stationaryRoutes = require("./routes/stationaryRoutes");
 
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/stationary", stationaryRoutes);
 

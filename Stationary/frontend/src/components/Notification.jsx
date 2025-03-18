@@ -4,6 +4,30 @@ import { messaging } from "../firebase";
 import { getToken, onMessage } from "firebase/messaging";
 
 const Notification = () => {
+  const updateFcmToken = async (fcmToken) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_SERVER_BASE_URL}/api/stationary/update`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({ fcmToken }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to update FCM token");
+      }
+    } catch (error) {
+      console.error("Error updating FCM Token:", error);
+    }
+  };
+
   useEffect(() => {
     const requestPermission = async () => {
       try {
@@ -13,6 +37,7 @@ const Notification = () => {
 
         if (token) {
           console.log("FCM Token:", token);
+          updateFcmToken(token);
         }
       } catch (err) {
         console.error("Error getting token:", err);
